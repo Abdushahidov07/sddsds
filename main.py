@@ -6,9 +6,9 @@ file_path = 'auto_update_program.py'
 
 # Список команд для выполнения
 commands = [
-    "",
-    "echo 'Second Command'",
-    "echo 'Third Command'"
+    "git add .",
+    'git commit -m "Add changes"',
+    "git push"
 ]
 
 # Индекс текущей команды
@@ -23,6 +23,7 @@ def execute_commands():
     # Выполняем три команды
     for _ in range(3):
         current_command = commands[command_index]
+        print(f"Выполняется команда: {current_command}")  # Печать команды для отладки
         os.system(current_command)
         
         # Переходим к следующей команде (по кругу)
@@ -56,8 +57,10 @@ def update_code():
     # Задержка 2 секунды перед следующим циклом
     time.sleep(2)
 
-    # После обновления кода, выполняем следующий цикл
-    execute_commands()
+def main():
+    # Запускаем выполнение команд и обновление кода в цикле
+    while True:
+        execute_commands()
 
 # Запуск программы
-execute_commands()
+main()
